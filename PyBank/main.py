@@ -9,18 +9,15 @@ with open(data_path) as datafile:
     next(csvreader)
 
     months_count = int()
-
+    npl = float()
+    
     for x in csvreader:
         months_count += 1
-    
-    print(f"The total number of months in the data set is {months_count}.")
-    
-    npl = float()
+        npl += float(x[1])
+        
 
-    for y in csvreader:
-        float(y.index[1])
-        print(f"{float(y.index[1])}")
-    
+    print(f"The total number of months in the data set is {months_count}.")
+        
     print(f"The net total amount of Profit/Losses is ${npl}.")
 
     
