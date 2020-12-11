@@ -49,15 +49,6 @@ with open(data_path) as datafile:
 # or set variable to date.pop(0)
 
 
-
-# check and make sure this works before asking. might have to f format
-#the max_month to str and index row    
-    # for row in monthchange_list:
-    #     if row[1] == max_change:
-    #         max_month = row
-    #     if row[1] == min_change:
-    #         min_month = row
-
     print("----------------------------------------------------------------")
     print("Financial Analysis")
     print("--------------------------------------")

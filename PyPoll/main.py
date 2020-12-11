@@ -36,11 +36,27 @@ with open(data_path) as datafile:
     cper = float(Ccount/tv) *100
     lper = float(Lcount/tv) *100
     oper = float(Ocount/tv) *100
-    cancount = {"Khan": kper, 
-                "Correy": cper, 
-                "Li": lper, 
-                "O'Tooley": oper}
+   
     
+    canlist = ["Khan", "Correy", "Li", "O'Tooley"]
+    canper = [kper, cper, lper, oper]
+
+    max_index = canper.index(max(canper))
+
+    winner = canlist[max_index]
+    
+    # if kper > cper and kper > lper and kper > oper:
+    #     winner = "Khan"
+    # elif cper > lper and cper > oper:
+    #     winner = "Correy"
+    # elif lper > oper:
+    #     winner = "Li"
+    # else:
+    #     winner = "O'Tooley"
+
+    # This is sorting according to the keys not the values so it returns Correy
+    # sorted_count = sorted(cancount.values())
+    # winner = sorted_count[0]
     # for key, value in cancount.items():
         
 
