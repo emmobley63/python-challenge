@@ -3,17 +3,16 @@ import csv
 
 data_path = os.path.join("Resources", "budget_data.csv")
 
+months_count = int()
+npl = float()
+date = []           # Months and year list
+mtm_change = []     # change in profit and loss without the months. Should be able to apply this to a list of months skipping the first month
+monthly_change = [] # creating a list for the monthl: change in profit
+
 with open(data_path) as datafile:
     csvreader = csv.reader(datafile, delimiter=',')
    
     next(csvreader)
-
-    months_count = int()
-    npl = float()
-    date = []           # Months and year list
-    mtm_change = []     # change in profit and loss without the months. Should be able to apply this to a list of months skipping the first month
-    monthly_change = [] # creating a list for the monthl: change in profit
-    monthskip= []
 
     first_row = next(csvreader)
     prev_month = float(first_row[1])
@@ -40,23 +39,22 @@ with open(data_path) as datafile:
 #the respective change in profit/loss change mtm
     
 
-    max_index = mtm_change.index(max(mtm_change))
-    min_index = mtm_change.index(min(mtm_change)) 
-    
-    avg_change = ((sum(mtm_change))/(len(mtm_change)))
+max_index = mtm_change.index(max(mtm_change))
+min_index = mtm_change.index(min(mtm_change)) 
+
+avg_change = ((sum(mtm_change))/(len(mtm_change)))
 
 #Instead of a dictionary. Trying to zip the different lists together and then if statement to print when index[1]=max,min
 # or set variable to date.pop(0)
 
 
-    print("----------------------------------------------------------------")
-    print("Financial Analysis")
-    print("--------------------------------------")
-    print(f"Number of Months: {months_count}")
-    print(f"Net Total Profit/Loss: ${npl}")
-    print(f"Average Change: ${avg_change}")    
-    print(f'Greatest Increase in Profits: {monthly_change[max_index]} ${mtm_change[max_index]}')
-    print(f'Greatest Decrease in Profits: {monthly_change[min_index]} ${mtm_change[min_index]}')
-    print("----------------------------------------------------------------")
+analysis = (f"----------------------------------------------------------------\n"
+"Financial Analysis\n --------------------------------------\n"
+f"Number of Months: {months_count}\n"
+f"Net Total Profit/Loss: ${npl}\n"
+f"Average Change: ${avg_change}\n"
+f"Greatest Increase in Profits: {monthly_change[max_index]} ${mtm_change[max_index]}\n"
+f"Greatest Decrease in Profits: {monthly_change[min_index]} ${mtm_change[min_index]}\n"
+"----------------------------------------------------------------")
     
 
