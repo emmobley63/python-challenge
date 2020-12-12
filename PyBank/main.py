@@ -49,12 +49,14 @@ avg_change = ((sum(mtm_change))/(len(mtm_change)))
 
 
 analysis = (f"----------------------------------------------------------------\n"
-"Financial Analysis\n --------------------------------------\n"
+"Financial Analysis\n"
+"--------------------------------------\n"
 f"Number of Months: {months_count}\n"
 f"Net Total Profit/Loss: ${npl}\n"
 f"Average Change: ${avg_change}\n"
 f"Greatest Increase in Profits: {monthly_change[max_index]} ${mtm_change[max_index]}\n"
 f"Greatest Decrease in Profits: {monthly_change[min_index]} ${mtm_change[min_index]}\n"
 "----------------------------------------------------------------")
+print(analysis)
     
 
