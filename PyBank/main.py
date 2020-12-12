@@ -12,7 +12,7 @@ with open(data_path) as datafile:
     npl = float()
     date = []           # Months and year list
     mtm_change = []     # change in profit and loss without the months. Should be able to apply this to a list of months skipping the first month
-    monthly_change = [] # creating a dict for the monthl: change in profit
+    monthly_change = [] # creating a list for the monthl: change in profit
     monthskip= []
 
     first_row = next(csvreader)

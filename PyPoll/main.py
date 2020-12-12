@@ -3,19 +3,20 @@ import csv
 
 data_path = os.path.join("Resources", "election_data.csv")
 
+tv = 0  
+voter = []
+county = []
+candidate = []
+Kcount = int()
+Ccount = int()
+Lcount = int()
+Ocount = int()
+results = {}
+
 with open(data_path) as datafile:
     csvreader = csv.reader(datafile, delimiter=',')
 
     next(csvreader)
-
-    tv = 0  
-    voter = []
-    county = []
-    candidate = []
-    Kcount = int()
-    Ccount = int()
-    Lcount = int()
-    Ocount = int()
 
     for x in csvreader:
         tv += 1
@@ -30,55 +31,41 @@ with open(data_path) as datafile:
             Ccount += 1
         if x[2] == "O'Tooley":
             Ocount += 1
-    
-    candidate_set = (set(candidate))
-    kper = float(Kcount/tv) *100
-    cper = float(Ccount/tv) *100
-    lper = float(Lcount/tv) *100
-    oper = float(Ocount/tv) *100
+
+
    
-    
-    canlist = ["Khan", "Correy", "Li", "O'Tooley"]
-    canper = [kper, cper, lper, oper]
+candidate_set = (set(candidate))
+kper = float(Kcount/tv) *100
+cper = float(Ccount/tv) *100
+lper = float(Lcount/tv) *100
+oper = float(Ocount/tv) *100
 
-    max_index = canper.index(max(canper))
 
-    winner = canlist[max_index]
-    
-    # if kper > cper and kper > lper and kper > oper:
-    #     winner = "Khan"
-    # elif cper > lper and cper > oper:
-    #     winner = "Correy"
-    # elif lper > oper:
-    #     winner = "Li"
-    # else:
-    #     winner = "O'Tooley"
+canlist = ["Khan", "Correy", "Li", "O'Tooley"]
+canper = [kper, cper, lper, oper]
 
-    # This is sorting according to the keys not the values so it returns Correy
-    # sorted_count = sorted(cancount.values())
-    # winner = sorted_count[0]
-    # for key, value in cancount.items():
+max_index = canper.index(max(canper))
+
+winner = canlist[max_index]
+
+ol = ("Election Results\n" 
+    "-----------------------\n"
+    f"Total Votes: {tv}\n"
+    "-----------------------\n"
+    f"Khan: {kper:.3f}% ({Kcount})\n"
+    f"Correy: {cper:.3f}% ({Ccount})\n"
+    f"Li: {lper:.3f}% ({Lcount})\n"
+    f"O'Tooley: {oper:.3f}% ({Ocount})\n"
+    "-----------------------\n"
+    f"Winner: {winner}\n"
+    "-----------------------\n")
+
+output_path = os.path.join("analysis", "output.txt")
+
+with open(output_path, "w") as txtfile:
+
+    print(ol)
+    txtfile.write(ol)
         
 
-
-    # winner = "O'Tooley"
-    # if kper > 50 or (kper > oper)
-    #     winner = "Khan"
-    # if cper > 50 or ()
-    #     winner = "Correy"
-    # if lper > 50
-    #     winner = "Li"
     
-
-
-    print("Election Results") 
-    print("-----------------------")
-    print(f"Total Votes: {tv}")
-    print("-----------------------")
-    print(f"Khan: {kper}% ({Kcount})")
-    print(f"Correy: {cper}% ({Ccount})")
-    print(f"Li: {lper}% ({Lcount})")
-    print(f"O'Tooley: {oper}% ({Ocount})")
-    print("-----------------------")
-    print(f"Winner: {winner}")
-    print("-----------------------")
