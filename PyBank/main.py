@@ -1,6 +1,8 @@
 import os
 import csv
 
+# Access the file
+
 data_path = os.path.join("Resources", "budget_data.csv")
 
 months_count = int()

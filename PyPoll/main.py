@@ -1,22 +1,28 @@
 import os
 import csv
 
+#Access the file
+
 data_path = os.path.join("Resources", "election_data.csv")
 
-tv = 0  
-voter = []
-county = []
-candidate = []
-Kcount = int()
-Ccount = int()
-Lcount = int()
-Ocount = int()
-results = {}
+tv = 0           # Total Voters
+voter = []       # list of voter ID
+county = []      # list of county
+candidate = []   # list of candidates
+Kcount = int()   # Khan vote count
+Ccount = int()   # Correy vote count
+Lcount = int()   # Li vote count
+Ocount = int()   # O'Tooley vote count
+
 
 with open(data_path) as datafile:
     csvreader = csv.reader(datafile, delimiter=',')
 
     next(csvreader)
+
+    # Looping to count Total votes
+    # Append the voter, county and candidate lists
+    # Count votes for each candidate
 
     for x in csvreader:
         tv += 1
@@ -32,7 +38,7 @@ with open(data_path) as datafile:
         if x[2] == "O'Tooley":
             Ocount += 1
 
-
+# Calculate the % using the count and sum of votes
    
 candidate_set = (set(candidate))
 kper = float(Kcount/tv) *100
@@ -40,13 +46,18 @@ cper = float(Ccount/tv) *100
 lper = float(Lcount/tv) *100
 oper = float(Ocount/tv) *100
 
+# Create list of candidates and a respectively indexed list of their percentages
 
 canlist = ["Khan", "Correy", "Li", "O'Tooley"]
 canper = [kper, cper, lper, oper]
 
+#Find the max index to access the name of the winner
+
 max_index = canper.index(max(canper))
 
 winner = canlist[max_index]
+
+# Set variable to print and write to txt file
 
 ol = ("Election Results\n" 
     "-----------------------\n"
