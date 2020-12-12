@@ -58,5 +58,10 @@ f"Greatest Increase in Profits: {monthly_change[max_index]} ${mtm_change[max_ind
 f"Greatest Decrease in Profits: {monthly_change[min_index]} ${mtm_change[min_index]}\n"
 "----------------------------------------------------------------")
 print(analysis)
-    
+
+output_path = os.path.join("analysis", "output.txt")
+
+with open(output_path, "w") as txtfile:
+
+    txtfile.write(analysis)
 
