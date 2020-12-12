@@ -6,8 +6,6 @@ import csv
 data_path = os.path.join("Resources", "election_data.csv")
 
 tv = 0           # Total Voters
-voter = []       # list of voter ID
-county = []      # list of county
 candidate = []   # list of candidates
 Kcount = int()   # Khan vote count
 Ccount = int()   # Correy vote count
@@ -26,8 +24,6 @@ with open(data_path) as datafile:
 
     for x in csvreader:
         tv += 1
-        voter.append(x[0])
-        county.append(x[1])
         candidate.append(x[2])
         if x[2] == "Li":
             Lcount += 1
